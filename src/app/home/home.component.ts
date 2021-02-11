@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
+
+    year: number = -1;
+    month: number = -1;
 
   ngOnInit(): void {
+      let params = this.route.snapshot.paramMap;
+      this.year = Number(params.get('year'));
+      this.month = Number(params.get('month'));
+
   }
 
   archives =
